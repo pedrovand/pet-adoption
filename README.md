@@ -6,70 +6,71 @@ A solução foi idealizada a partir de uma visita técnica e entrevista realizad
 
 Durante a entrevista, foram identificadas demandas relacionadas à:
 
-falta de um sistema estruturado para registro e controle dos animais atendidos;
+- falta de um sistema estruturado para registro e controle dos animais atendidos;
 
-dificuldade de localizar informações armazenadas apenas no celular (fotos e conversas de WhatsApp);
+- dificuldade de localizar informações armazenadas apenas no celular (fotos e conversas de WhatsApp);
 
-necessidade de otimizar o tempo gasto com comunicações e gestão de processos;
+- necessidade de otimizar o tempo gasto com comunicações e gestão de processos;
 
-ausência de um canal formal para divulgação de animais disponíveis e recebimento de doações.
+- ausência de um canal formal para divulgação de animais disponíveis e recebimento de doações.
 
 Com base nessas necessidades, foi desenvolvido um modelo de banco de dados relacional que serve como base para uma futura aplicação web/mobile, permitindo à equipe do Lar Bastet gerenciar de forma mais eficiente todo o fluxo de trabalho.
 
 🗄️ Estrutura do Banco de Dados
 O banco de dados foi projetado para armazenar informações sobre:
 
-animais acolhidos;
+- animais acolhidos;
 
-pessoas envolvidas (adotantes, responsáveis);
+- pessoas envolvidas (adotantes, responsáveis);
 
-adoções realizadas;
+- adoções realizadas;
 
-usuários do sistema (colaboradores que acessam a plataforma).
+- usuários do sistema (colaboradores que acessam a plataforma).
 
 📌 Principais Entidades
-adotante
+
+*adotante*
 Armazena os dados dos responsáveis que adotam os animais.
 
-cpf (chave primária)
+- cpf (chave primária)
 
-nome, email, telefone, endereço
+- nome, email, telefone, endereço
 
-usuario_sistema
+*usuario_sistema*
 Registra os colaboradores que têm acesso ao sistema (atualmente Katiana e Brigid).
 
-id_usuario (chave primária)
+- id_usuario (chave primária)
 
-nome, email, telefone, senha
+- nome, email, telefone, senha
 
-pet
+*pet*
 Cadastro completo dos animais atendidos pelo projeto.
 
-id_pet (chave primária)
+- id_pet (chave primária)
 
-data_entrada, idade, sexo, cor, descrição, status
+- data_entrada, idade, sexo, cor, descrição, status
 
-fk_usuario_sistema_id_usuario (quem registrou o animal)
+- fk_usuario_sistema_id_usuario (quem registrou o animal)
 
-adocao
+*adocao*
 Registro do processo de adoção, com vínculo entre o animal e o adotante.
 
-id_adocao (chave primária)
+- id_adocao (chave primária)
 
-data_adocao, obs, termo_compromisso
+- data_adocao, obs, termo_compromisso
 
-relacionamentos com pet, adotante e usuario_sistema
+- relacionamentos com pet, adotante e usuario_sistema
 
 🔗 Relacionamentos e Integridade
 As chaves estrangeiras garantem a consistência dos dados:
 
-pet → usuario_sistema: cada animal é vinculado ao usuário que o cadastrou.
+- pet → usuario_sistema: cada animal é vinculado ao usuário que o cadastrou.
 
-adocao → pet: uma adoção pertence a um único animal (exclusividade no momento da adoção).
+- adocao → pet: uma adoção pertence a um único animal (exclusividade no momento da adoção).
 
-adocao → adotante: uma adoção está associada a um único adotante.
+- adocao → adotante: uma adoção está associada a um único adotante.
 
-adocao → usuario_sistema: registro de quem concluiu o processo de adoção.
+- adocao → usuario_sistema: registro de quem concluiu o processo de adoção.
 
 Regras de integridade:
 
