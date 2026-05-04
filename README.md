@@ -86,3 +86,11 @@ MySQL — Sistema de gerenciamento de banco de dados relacional
 Modelagem — Diagrama Entidade-Relacionamento (conceitual, lógico e físico)
 
 Ferramentas de apoio — brModelo 3.3.3, MySQL Workbench
+
+Módulo: Cadastro e Gerenciamento de Gatos (Backend)
+Desenvolvido como parte fundamental do sistema para automatizar a entrada de novos animais para adoção, substituindo processos manuais.
+
+### Funcionalidades:
+- **Cadastro de Felinos:** Registro estruturado com nome, idade e características.
+- **Banco de Dados Relacional:** Implementação em SQLite para persistência dos dados de adoção.
+- **Painel Administrativo:** Interface Django para gerenciamento rápido pela equipe da clínica.
