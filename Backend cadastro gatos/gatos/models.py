@@ -25,7 +25,7 @@ class Pet(models.Model):
     usuario_cadastro = models.ForeignKey(User, on_delete=models.PROTECT, related_name='pets_cadastrados')
 
     def __str__(self):
-        return f"{self.nome} ({self.status})"
+        return f"Pet #{self.pk} ({self.status})"
 
 class Adotante(models.Model):
     cpf = models.CharField(max_length=14, primary_key=True, help_text="000.000.000-00")

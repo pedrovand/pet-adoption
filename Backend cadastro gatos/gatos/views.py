@@ -1,17 +1,8 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from .models import Pet
 
-# Create your views here.
-
-from django.shortcuts import render, redirect
-from .forms import AdotanteForm
-
-def cadastrar_adotante(request):
-    if request.method == 'POST':
-        form = AdotanteForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('sucesso') # Redireciona após salvar
-    else:
-        form = AdotanteForm()
-    
-    return render(request, 'cadastro_adotante.html', {'form': form})
+def listar_gatos(request):
+    gatos = Pet.objects.filter(status='disponivel').values(
+        'id', 'idade', 'sexo', 'cor', 'descricao', 'foto'
+    )
+    return JsonResponse(list(gatos), safe=False)

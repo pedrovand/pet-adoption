@@ -43,68 +43,35 @@
     </section>
 
     <section class="section">
-      <div class="container cat-grid">
-        <article class="cat-card">
-          <img src="./src/img/imagemEx.jpg" alt="Gata Nala">
-          <div class="cat-card-content">
-            <div class="cat-card-header">
-              <h3>Nala</h3>
-              <span>1 ano</span>
-            </div>
-            <p>Uma gata doce, observadora e ideal para lares tranquilos.</p>
-            <a class="button button-primary button-full" href="./como-adotar.html">Quero adotar</a>
-          </div>
-        </article>
-
-        <article class="cat-card">
-          <img src="./src/img/imagemEx.jpg" alt="Gato Bento">
-          <div class="cat-card-content">
-            <div class="cat-card-header">
-              <h3>Bento</h3>
-              <span>8 meses</span>
-            </div>
-            <p>Cheio de energia e perfeito para quem quer um gato brincalhão.</p>
-            <a class="button button-primary button-full" href="./como-adotar.html">Quero adotar</a>
-          </div>
-        </article>
-
-        <article class="cat-card">
-          <img src="./src/img/imagemEx.jpg" alt="Gata Mel">
-          <div class="cat-card-content">
-            <div class="cat-card-header">
-              <h3>Mel</h3>
-              <span>2 anos</span>
-            </div>
-            <p>Muito afetuosa, se adapta bem a rotínas carinhosas e cuidadosas.</p>
-            <a class="button button-primary button-full" href="./como-adotar.html">Quero adotar</a>
-          </div>
-        </article>
-
-        <article class="cat-card">
-          <img src="./src/img/imagemEx.jpg" alt="Gato Chico">
-          <div class="cat-card-content">
-            <div class="cat-card-header">
-              <h3>Chico</h3>
-              <span>3 anos</span>
-            </div>
-            <p>Um companheiro sereno, ideal para lares com rotina mais calma.</p>
-            <a class="button button-primary button-full" href="./como-adotar.html">Quero adotar</a>
-          </div>
-        </article>
-
-        <article class="cat-card">
-          <img src="./src/img/imagemEx.jpg" alt="Gata Frida">
-          <div class="cat-card-content">
-            <div class="cat-card-header">
-              <h3>Frida</h3>
-              <span>10 meses</span>
-            </div>
-            <p>Sociavel, companheira e muito receptiva a carinho e brincadeiras.</p>
-            <a class="button button-primary button-full" href="./como-adotar.html">Quero adotar</a>
-          </div>
-        </article>
+      <div class="container cat-grid" id="cat-grid">
       </div>
     </section>
+
+    <script>
+      fetch('http://127.0.0.1:8000/api/gatos/')
+        .then(res => res.json())
+        .then(gatos => {
+          const grid = document.getElementById('cat-grid');
+          gatos.forEach(gato => {
+            const sexo = gato.sexo === 'M' ? 'Macho' : 'Fêmea';
+            const idade = gato.idade ? gato.idade + ' ano(s)' : 'Idade desconhecida';
+            const foto = gato.foto ? 'http://127.0.0.1:8000/media/' + gato.foto : './src/img/imagemEx.jpg';
+            grid.innerHTML += `
+              <article class="cat-card">
+                <img src="${foto}" alt="Gato disponível">
+                <div class="cat-card-content">
+                  <div class="cat-card-header">
+                    <h3>${sexo} · ${gato.cor}</h3>
+                    <span>${idade}</span>
+                  </div>
+                  <p>${gato.descricao || 'Sem descrição.'}</p>
+                  <a class="button button-primary button-full" href="./como-adotar.html">Quero adotar</a>
+                </div>
+              </article>
+            `;
+          });
+        });
+    </script>
   </main>
 </body>
 </html>
