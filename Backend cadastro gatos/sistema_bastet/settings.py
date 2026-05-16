@@ -35,7 +35,7 @@ SECRET_KEY = 'django-insecure-vuo!8v)9nt=_+#+ypq-ww1$40j1!#g@(txy$nfzm&r+ae&cuz_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pet-adoption-q581.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -144,5 +144,6 @@ import os
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 CORS_ALLOW_ALL_ORIGINS = True
