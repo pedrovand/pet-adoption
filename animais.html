@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animais | Lar Bastet</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./src/img/logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="./src/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container topbar">
+      <a class="brand" href="./index.html">
+        <img src="./src/img/logo.jpeg" alt="Logo do Lar Bastet" class="brand-logo">
+        <div class="brand-copy">
+          <strong>Lar Bastet</strong>
+          <span>Jundiaí/SP</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Principal">
+        <a href="./animais.html">Animais</a>
+        <a href="./como-adotar.html">Como adotar</a>
+        <a href="./contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="page-hero">
+      <div class="container page-panel">
+        <div>
+          <p class="eyebrow">Animais</p>
+          <h1>Gatos disponíveis para adoção.</h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container cat-grid" id="cat-grid">
+      </div>
+    </section>
+
+    <script>
+      fetch('http://127.0.0.1:8000/api/gatos/')
+        .then(res => res.json())
+        .then(gatos => {
+          const grid = document.getElementById('cat-grid');
+          gatos.forEach(gato => {
+            const sexo = gato.sexo === 'M' ? 'Macho' : 'Fêmea';
+            const idade = gato.idade ? gato.idade + ' ano(s)' : 'Idade desconhecida';
+            const foto = gato.foto ? 'http://127.0.0.1:8000/media/' + gato.foto : './src/img/imagemEx.jpg';
+            grid.innerHTML += `
+              <article class="cat-card">
+                <img src="${foto}" alt="Gato disponível">
+                <div class="cat-card-content">
+                  <div class="cat-card-header">
+                    <h3>${sexo} · ${gato.cor}</h3>
+                    <span>${idade}</span>
+                  </div>
+                  <p>${gato.descricao || 'Sem descrição.'}</p>
+                  <a class="button button-primary button-full" href="./como-adotar.html">Quero adotar</a>
+                </div>
+              </article>
+            `;
+          });
+        });
+    </script>
+  </main>
+</body>
+</html>
