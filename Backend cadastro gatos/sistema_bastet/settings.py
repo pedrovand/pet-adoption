@@ -9,11 +9,21 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+import dj_database_url
+import psycopg2
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+#by gabriel carvalho
+# esse dotenv é para carregar as variáveis de ambiente do arquivo .env, e lá estão as credenciais do banco de dados, para não deixar exposto aqui no código, e também para facilitar a configuração em diferentes ambientes (desenvolvimento, produção, etc)
+# gente, o arquivo .env nao vai ser comitado no github por conter a senha do banco de dados, entao cada um vai ter que criar o arquivo .env na raiz do projeto com as variáveis de ambiente
+# o conteúdo do arquivo .env eu posso mandar no nosso grupinho do zap.
+env_path = BASE_DIR / '/Backend cadastro gatos/.env'
+load_dotenv(dotenv_path=env_path)
 
 
 # Quick-start development settings - unsuitable for production
@@ -75,12 +85,23 @@ WSGI_APPLICATION = 'sistema_bastet.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+#by gabriel carvalho
+# configuração de apontamento para o banco de dados PostgreSQL hospedado na Supabase
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres.ffyclullnfnnsqfxzhgd',
+        'PASSWORD': 'Projeto2024',
+        'HOST': 'aws-1-sa-east-1.pooler.supabase.com',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
     }
 }
+
+
 
 
 # Password validation

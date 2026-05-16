@@ -51,5 +51,5 @@ class Adocao(models.Model):
     class Meta:
         verbose_name_plural = "Adoções"
     
-    python manage.py makemigrations
-    python manage.py migrate
+    #python manage.py makemigrations
+    #python manage.py migrate
