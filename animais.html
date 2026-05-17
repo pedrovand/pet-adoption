@@ -54,7 +54,7 @@
           const grid = document.getElementById('cat-grid');
           gatos.forEach(gato => {
             const sexo = gato.sexo === 'M' ? 'Macho' : 'Fêmea';
-            const idade = gato.idade ? gato.idade + ' ano(s)' : 'Idade desconhecida';
+            const idade = gato.idade ? gato.idade + ' meses(s)' : 'Idade desconhecida';
             const foto = gato.foto ? 'http://127.0.0.1:8000/media/' + gato.foto : './src/img/imagemEx.jpg';
             grid.innerHTML += `
               <article class="cat-card">
