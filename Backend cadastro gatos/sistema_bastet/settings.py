@@ -16,7 +16,7 @@ import dj_database_url
 import psycopg2
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(_file_).resolve().parent.parent
 
 #by gabriel carvalho
 # esse dotenv é para carregar as variáveis de ambiente do arquivo .env, e lá estão as credenciais do banco de dados, para não deixar exposto aqui no código, e também para facilitar a configuração em diferentes ambientes (desenvolvimento, produção, etc)
@@ -30,7 +30,7 @@ load_dotenv(dotenv_path=env_path)
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-vuo!8v)9nt=_+#+ypq-ww1$40j1!#g@(txy$nfzm&r+ae&cuz_'
+SECRET_KEY = 'django-insecure-vuo!8v)9nt=+#+ypq-ww1$40j1!#g@(txy$nfzm&r+ae&cuz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -139,6 +139,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_URL = '/gestao/loginbastet/'
+LOGIN_REDIRECT_URL = '/gestao/'
+LOGOUT_REDIRECT_URL = '/gestao/loginbastet/'
 
 import os
 

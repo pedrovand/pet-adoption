@@ -31,3 +31,11 @@ class Adocao(models.Model):
     def __str__(self):
         return f"{self.adotante} adotou {self.gato}"
         
+
+class PetForm(forms.ModelForm):
+    class Meta:
+        model = Pet
+        fields = ['idade', 'sexo', 'cor', 'descricao', 'status', 'foto']
+        widgets = {
+            'descricao': forms.Textarea(attrs={'rows': 4}),
+        }
