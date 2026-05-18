@@ -368,6 +368,8 @@ h2 {
 
 .cat-card {
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .cat-card img {
@@ -381,6 +383,11 @@ h2 {
   flex-direction: column;
   gap: 0.95rem;
   padding: 1.2rem;
+  flex: 1;
+}
+
+.cat-card-content .button {
+  margin-top: auto;
 }
 
 .cat-card-header {
