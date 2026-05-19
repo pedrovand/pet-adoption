@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # esse dotenv é para carregar as variáveis de ambiente do arquivo .env, e lá estão as credenciais do banco de dados, para não deixar exposto aqui no código, e também para facilitar a configuração em diferentes ambientes (desenvolvimento, produção, etc)
 # gente, o arquivo .env nao vai ser comitado no github por conter a senha do banco de dados, entao cada um vai ter que criar o arquivo .env na raiz do projeto com as variáveis de ambiente
 # o conteúdo do arquivo .env eu posso mandar no nosso grupinho do zap.
-env_path = BASE_DIR / '/Backend cadastro gatos/.env'
+env_path = BASE_DIR / '.env'
 load_dotenv(dotenv_path=env_path)
 
 
@@ -92,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres.ffyclullnfnnsqfxzhgd',
-        'PASSWORD': 'Projeto2024',
+        'PASSWORD': '',
         'HOST': 'aws-1-sa-east-1.pooler.supabase.com',
         'PORT': '5432',
         'OPTIONS': {
